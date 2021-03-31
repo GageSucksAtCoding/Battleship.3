@@ -1,0 +1,118 @@
+from termcolor import colored
+
+print("***BATTLESHIP***")
+
+def printComputerBoard():
+  print("  0 1 2 3 4 5 6 7 8 9")
+  r = 0
+  for row in ComputerBoard:
+    print(r, end = ' ')
+    r += 1
+    for elem in row:
+      print(elem, end = " ")
+    print()
+ComputerBoard = [
+	['*', '*', '*', '*', '*', '*', '*', 'D', 'D', 'D'],
+	['*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
+	['*', 'S', 'S', 'S', '*', '*', '*', '*', '*', '*'],
+	['*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
+	['*', 'C', 'C', 'C', 'C', 'C', '*', '*', '*', '*'],
+	['*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
+  ['*', '*', '*', '*', '*', 'B', 'B', 'B', 'B', '*'],
+  ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
+  ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
+  ['*', '*', '*', 'P', 'P', '*', '*', '*', '*', '*'],
+]
+printComputerBoard()
+Board = [
+	['*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
+	['*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
+	['*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
+	['*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
+	['*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
+	['*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
+  ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
+  ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
+  ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
+  ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
+]
+
+player1 = [] 
+
+
+for i in range(10): 
+    row = []
+     
+    for j in range(10):
+        row.append('*')
+    player1.append(row) 
+
+def printBoard():
+  print("  0 1 2 3 4 5 6 7 8 9")
+  r = 0
+  for row in Board:
+    print(r, end = ' ')
+    r += 1
+    for elem in row:
+      print(elem, end = " ")
+    print()
+
+#MAIN GAME PLAY
+printBoard()
+
+
+shipDict = {
+  'Cruiser': [5, 'C'],
+  'Battleship': [4, 'B'],
+  'Destroyer': [3, 'D'],
+  'Submarine': [3, 'S'],
+  'Patrol Boat': [2, 'P']
+}
+
+ships = []
+remainingShips = []
+
+for x in shipDict:
+  remainingShips.append(x)
+
+
+while len(remainingShips) >= 0:
+  print(remainingShips)
+  userIn = input('What ship >> ')
+  row = int(input("Enter row: "))
+  col = int(input("Enter col: "))
+  for x in range(shipDict[userIn][0]):
+    Board[row][col] = shipDict[userIn][1]
+    col+=1
+  remainingShips.remove(userIn)
+  printBoard()
+'''
+for row in range(10):
+	for col in range(10):
+		if row == 5 and col == 5:
+			print(colored(player1[row][col], 'green'), end= ' ')
+		else:
+			print(colored(player1[row][col], 'red'), end= ' ')
+	print()
+'''
+def printComputerBoard():
+  print("  0 1 2 3 4 5 6 7 8 9")
+  r = 0
+  for row in ComputerBoard:
+    print(r, end = ' ')
+    r += 1
+    for elem in row:
+      print(elem, end = " ")
+    print()
+ComputerBoard = [
+	['*', '*', '*', '*', '*', '*', '*', 'D', 'D', 'D'],
+	['*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
+	['*', 'S', 'S', 'S', '*', '*', '*', '*', '*', '*'],
+	['*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
+	['*', 'C', 'C', 'C', 'C', 'C', '*', '*', '*', '*'],
+	['*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
+  ['*', '*', '*', '*', '*', 'B', 'B', 'B', 'B', '*'],
+  ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
+  ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
+  ['*', '*', '*', 'P', 'P', '*', '*', '*', '*', '*'],
+]
